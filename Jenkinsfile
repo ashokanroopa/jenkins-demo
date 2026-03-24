@@ -5,32 +5,22 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo "Building the application..."
-                sleep 5
+                echo "Building application..."
             }
         }
 
-        stage('Parallel Execution') {
+        stage('Parallel Stage') {
             parallel {
 
-                stage('Testing') {
+                stage('Test') {
                     steps {
-                        echo "Running Tests..."
-                        sleep 5
+                        echo "Running tests..."
                     }
                 }
 
-                stage('Lint Check') {
+                stage('Code Check') {
                     steps {
-                        echo "Checking Code Quality..."
-                        sleep 5
-                    }
-                }
-
-                stage('Security Scan') {
-                    steps {
-                        echo "Running Security Scan..."
-                        sleep 5
+                        echo "Checking code..."
                     }
                 }
             }
@@ -38,7 +28,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo "Deploying Application..."
+                echo "Deploying application..."
             }
         }
     }
